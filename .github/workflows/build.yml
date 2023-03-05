@@ -1,0 +1,31 @@
+name: Build binaries and Release
+
+on:
+  push:
+    tags:
+      - v*.*.*
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ['windows-latest', 'ubuntu-latest', 'macos-latest']
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+      with:
+        python-version: 3.7
+    - name: Set env
+      run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+    - name: Install modules
+      run: pip install -r requirements.txt pyinstaller
+    - name: Build
+      run: pyinstaller cli.py -F --name rvb-py-${{ matrix.os }}
+    - name: Upload to Releases
+      uses: softprops/action-gh-release@v1
+      with:
+        files: dist/*
+        tag_name: ${{ env.RELEASE_VERSION }}

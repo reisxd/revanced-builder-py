@@ -1,0 +1,4 @@
+inquirer
+tdqm
+requests
+beautifulsoup4
