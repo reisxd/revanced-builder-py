@@ -60,7 +60,7 @@ def FetchVersions(app, config):
                 continue
             versionList.append({
                 'versionName': versionName,
-                'recommended': versionName in config.GetPatches()['recommendedVersions'],
+                'recommended': re.sub("\-", ".", versionName) in config.GetPatches()['recommendedVersions'],
                 'beta': 'beta' in versionTitle
             })
 

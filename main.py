@@ -124,9 +124,10 @@ def main():
     versions = FetchVersions(selectedApp, config)
 
     versionList = []
+    backslashChar = "\\"
     for version in versions:
         versionList.append(
-            (f"{version['versionName']} {'(Recommended)' if version['recommended'] else ''}", version))
+            (f"{re.sub(f'{backslashChar}-', '.', version['versionName'])} {'(Recommended)' if version['recommended'] else ''}", version))
 
     questions = [
         inquirer.List(
