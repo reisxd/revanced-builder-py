@@ -20,8 +20,8 @@ def main():
         os.mkdir('./revanced')
 
     if not CheckJDKInstalled():
-        print('aa')
         ExitApp()
+
     print('Welcome to ReVanced Builder PY! Please wait while Builder updates files.')
 
 

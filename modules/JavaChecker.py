@@ -12,7 +12,7 @@ def CheckJDKInstalled():
         javaLog = result.stdout or result.stderr
         buildString = re.findall('\(.+?\)', javaLog)
         if buildString == []:
-            print('JDK is not installed.')
+            print('JDK is not installed.\nPlease install JDK from here: https://www.azul.com/downloads-new/?package=jdk')
             return False
         indx = 0
         for i in range(0, len(buildString)):
@@ -27,4 +27,5 @@ def CheckJDKInstalled():
         else:
             return True
     except FileNotFoundError:
+        print('JDK is not installed.\nPlease install JDK from here: https://www.azul.com/downloads-new/?package=jdk')
         return False
