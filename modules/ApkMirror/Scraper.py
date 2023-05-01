@@ -48,6 +48,8 @@ def FetchVersions(app, config):
             if 'widgetHeader' in version['class']:
                 continue
             versionTitle = version['title'].lower()
+            if 'download apkmirror' in versionTitle:
+                    continue
             for child in version.contents:
                 if child == '\n' or child == ' ':
                     continue
