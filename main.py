@@ -95,7 +95,7 @@ def main():
         WritePatches(selectedApp['appPackage'], answers['patches'])
         config.SetPatches('patches', answers['patches'])
         if (selectedApp['appPackage'] == 'com.google.android.youtube'
-            and 'microg-support' not in answers['patches']) or (selectedApp['appPackage'] == 'com.google.android.apps.youtube.music'
+            and 'vanced-microg-support' not in answers['patches']) or (selectedApp['appPackage'] == 'com.google.android.apps.youtube.music'
                                                             and 'music-microg-support' not in answers['patches']):
             
             deviceId = CheckForRoot()
